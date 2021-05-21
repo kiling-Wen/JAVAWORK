@@ -1,0 +1,8 @@
+package one_code;
+
+public class one_code11111 {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("helloworld!");
+	}
+}
