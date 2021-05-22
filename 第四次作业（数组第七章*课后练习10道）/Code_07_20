@@ -1,0 +1,35 @@
+//*7.20（修改选择排序法）在7.11节中， 使用了选择排序法对数组排序。选择排序法重复的在当前数组中找到最小值，
+//然后将这个最小值与该数组中的第一个数进行交换。改写这个程序，重复的在当前数组中找到最大值，
+//然后将这个最大值与该数组中的最后一个数进行交换。编写一个测试程序，读取10个double型的数字，调用该方法，并显示排好序的数字。
+
+import java.util.Scanner;
+public class Code_07_20 {
+
+	public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter 10 doubles: ");
+        double[] str = new double[10];
+        for(int i = 0;i < 10;i++)
+            str[i] = input.nextDouble();
+        selectionSort(str);
+        for(int i = 0;i < 10;i++)
+            System.out.print(str[i] + " ");
+    }
+    public static void selectionSort(double[] list){
+        for(int i = 0;i < list.length - 1;i++){
+            double currentMax = list[i];
+            int currentMaxIndex = i;
+            for(int j = i + 1;j < list.length;j++){
+                if(currentMax > list[j]){
+                    currentMax = list[j];
+                    currentMaxIndex = j;
+                }
+            }
+            if(currentMaxIndex != i){
+                list[currentMaxIndex] = list[i];
+                list[i] = currentMax;
+            }
+        }
+    }
+
+}
