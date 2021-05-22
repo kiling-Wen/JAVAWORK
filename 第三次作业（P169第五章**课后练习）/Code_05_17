@@ -1,0 +1,25 @@
+import java.util.Scanner;
+public class Code_05_17 {
+
+	public static void main(String[] args) {
+        System.out.print("Enter the number of lines: ");
+        @SuppressWarnings("resource")
+		Scanner inputScanner = new Scanner(System.in);
+        int numberOfLines = inputScanner.nextInt();
+
+        for(int line = 1;line <= numberOfLines;line++)
+        {
+            for(int i = 1;i <= 2 * (numberOfLines - line);i++)
+                System.out.print(" ");
+
+            for(int i = line;i >= 1;i--)
+                System.out.printf("%d ",i);
+
+            for(int i = 2;i <= line;i++)
+                System.out.printf("%d ",i);
+
+            System.out.print("\n");
+        }
+    }
+
+}
