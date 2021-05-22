@@ -1,0 +1,42 @@
+//*7.6（修改程序清单5-15）程序清单5-15通过检验2，3,4，5,6，…，n/2是否是数n的因子来判断n是否是素数。
+//如果找到一个因子，n就不是素数。判断n是否素数的另一个更高效的方法是：检验小于等于根号n的素数是否有一个能被n整除。
+//如果都不能，则n就是素数。使用这个方法该些程序清单5-15以显示前50个素数。需要使用一个数组存储这些素数，
+//之后使用这些素数来检测他们是否可能为n的因子。
+public class Code_07_06 {
+
+	public static void main(String[] args){
+        int[] nums = new int[60];
+        nums[0] = 2;
+        int count = 1;
+        while(true){
+            if(count == 50)
+                break;
+            else{
+                int base = nums[count - 1];
+                while(true){
+                    base++;
+                    if(isPrime(base,nums,count)){
+                        nums[count] = base;
+                        count++;
+                        break;
+                    }
+                }
+            }
+        }
+        for(int i = 0;i < count;i++)
+            System.out.print(nums[i] + " ");
+    }
+    public static boolean isPrime(int num,int[] num2,int count){
+        boolean re = true;
+        for(int i = 0;i < count;i++){
+            if(num2[i] > Math.sqrt(num))
+                break;
+            if(num % num2[i] == 0){
+                re = false;
+                break;
+            }
+        }
+        return re;
+    }
+
+}
