@@ -1,0 +1,55 @@
+//*9.6（秒表）设计一个名为StopWatch的类，该类包含：
+//具有设置方法的私有数据与startTime和endTime。
+//一个无参构造方法，使用当前时间来初始化startTime。
+//一个名为start（）的方法，将startTime重设为当前时间。
+//一个名为stop（）的方法，将endTime设置为当前时间。
+//一个名为getElapsedTime（）的方法，返回以毫秒为单位的秒表记录的流逝时间。
+//画出该类的YML图并实现这个类。编写一个测试程序，用于测量使用选择排序对100000个数字进行排序的执行时间。
+public class Code_09_06 {
+    public static void main(String[] args){
+        StopWatch time = new StopWatch();
+        int[] nums = new int[100000];
+        for(int i = 1; i <= 100000; ++i)
+            nums[i - 1] = (int)((System.currentTimeMillis() / i) % 1000);
+
+        time.start();
+        for(int i = 0; i < 99999; ++i){
+            for(int j = i+1; j < 100000; ++j){
+                if(nums[i] > nums[j]){
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+                }
+            }
+        }
+        time.stop();
+
+        System.out.println(time.getElapsedTime());
+    }
+}
+class StopWatch{
+    private long startTime;
+    private long endTime;
+    public void setStartTime(long newStartTime){
+        startTime = newStartTime;
+    }
+    public void setEndTime(long newEndTime){
+        endTime = newEndTime;
+    }
+    public StopWatch(){
+        startTime = System.currentTimeMillis();
+    }
+
+    public void start(){
+        startTime = System.currentTimeMillis();
+    }
+
+    public void stop(){
+        endTime = System.currentTimeMillis();
+    }
+
+    public long getElapsedTime(){
+        return endTime - startTime;
+    }
+}
+
