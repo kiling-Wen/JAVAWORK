@@ -1,0 +1,18 @@
+//*9.3（使用Date类）编写程序创建一个 Date 对象，设置它的流逝时间分别为 10000、100000、1000000、
+//10000000、100000000、1000000000、10000000000、100000000000 ，然后使用 toString() 方法分别显示上述日期。
+
+
+import java.util.Date;
+
+public class Code_09_03 {
+    public static void main(String[] args) {
+        for (long l = 10000,i = 0;i < 8;i++){
+            Date date = new Date(l);
+            toString(l,date);
+            l *= 10;
+        }
+    }
+    public static void toString(long l, Date date){
+        System.out.println(l + ": " + date.toString());
+    }
+}
