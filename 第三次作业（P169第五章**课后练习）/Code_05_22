@@ -1,0 +1,47 @@
+//**5.22（金融应用：显示分期还贷时间表）对于给定的贷款额，月支付额包括偿还本金及利息。
+//月利息是通过月利率乘以余额（剩余本金）计算出来的。因此每月偿还的本金等于月支付额减去月利息。
+//编写一个程序，让用户输入贷款总额、贷款年数以及利率，然后显示分期还贷时间表。
+//下面是一个运行示例：
+//Loan Amount: 10000
+//Number of Years: 1
+//Annual Interest Rate: 7
+//Monthly Payment: 865.26
+//Total Payment: 10383.21
+import java.util.Scanner;
+public class Code_05_22 {
+
+	public static void main(String[] args) {
+        int numberOfYears;
+        double loanAmount, rate, monthlyPayment, totalPayment, monthlyInterestRate, balance;
+
+        @SuppressWarnings("resource")
+		Scanner inputScanner = new Scanner(System.in);
+        System.out.print("Loan Amount: ");
+        loanAmount = inputScanner.nextDouble();
+
+        System.out.print("Number of Years: ");
+        numberOfYears = inputScanner.nextInt();
+
+        System.out.print("Annual Interest Rate: ");
+        rate = inputScanner.nextDouble();
+
+        monthlyPayment = loanAmount * (rate / 1200)
+                / (1-1/Math.pow(1 + (rate / 1200), numberOfYears * 12));
+        totalPayment = monthlyPayment * numberOfYears * 12;
+        balance = loanAmount;
+        monthlyInterestRate = rate / 1200;
+
+        System.out.printf("Monthly Payment: %.2f\n", monthlyPayment);
+        System.out.printf("Total Payment: %.2f\n\n", totalPayment);
+
+        System.out.printf("Payment#\tInterest\tPrincipal\tBalance\n");
+        for (int i = 1; i <= numberOfYears * 12; i++)
+        {
+            double interest = monthlyInterestRate * balance;
+            double principal = monthlyPayment - interest;
+            balance = balance - principal;
+            System.out.printf("%d\t\t%.2f\t\t%.2f\t\t%.2f\n", i, interest, principal, balance);
+        }
+    }
+
+}
