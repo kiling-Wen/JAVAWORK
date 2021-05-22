@@ -1,0 +1,23 @@
+//*7.28（数学：组合）编写一个程序，提示用户输入10个整数，然后显示从这个10个数中选出两个数的所有组合。
+
+import java.util.Scanner;
+public class Code_07_28 {
+
+	public static void main(String[] args){
+        int[] nums = new int[10];
+        System.out.print("Enter 10 numbers:");
+        @SuppressWarnings("resource")
+		Scanner cin = new Scanner(System.in);
+        for(int i = 0; i < 10; ++i){
+            nums[i] = cin.nextInt();
+        }
+
+        for(int i = 0; i < 10; ++i){
+            for(int j = i+1; j < 10; ++j){
+                System.out.print(nums[i] + "," + nums[j] + "  ");
+            }
+            System.out.println();
+        }
+    }
+
+}
