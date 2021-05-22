@@ -1,0 +1,15 @@
+//*7.7（统计个位数的数目）编写一个程序，生成0-9之间的100个随机整数，然后显示每一个数出现的次数。
+//提示：使用（ int ）（Math.random（）*10）产生0到9之间的随机整数。使用一个名为counts的由10个整数构成的数组村昂0,1，…，9的个数。
+public class Code_07_07 {
+	public static void main(String[] args) {
+        int[] count = new int[10];
+        for (int i = 0;i < 100;i++){
+            int n = (int)(Math.random() * 10);
+            count[n]++;
+        }
+        for (int i = 0;i < 10;i++){
+            System.out.println("The number of " + i + " is " + count[i]);
+        }
+    }
+
+}
