@@ -1,0 +1,18 @@
+//*7.13（随机数选择器）编写一个方法，返回1到45之间的随机数，但不能是传递到实参中的数。如下指定这个方法头：
+public class Code_07_13 {
+
+	public static void main(String[] args) {
+        int[] list = {1,23,89,23,4};
+        System.out.println(getRandom(list));
+    }
+    public static int getRandom(int...numbers){
+        int random = (int)(1 + Math.random() * 54);
+        for (int i = 1;i < numbers.length;i++){
+            if (random == numbers[i]){
+                random = (int)(1 + Math.random() * 54);
+            }
+        }
+        return random;
+    }
+
+}
