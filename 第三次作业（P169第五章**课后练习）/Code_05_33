@@ -1,0 +1,18 @@
+//完全数）如果一个正整数等于除它本身之外其他所有除数之和，就称之为完全数。例如：6是第一个完全数，
+//因为6 = 1 + 2 + 3.下一个完全数是28 = 14 + 7 + 4 + 2 + 1。
+//10000以下的完全数有四个。编写程序，找出这四个完全数。
+public class Code_05_33 {
+
+	public static void main(String[] args) {
+        for (int i = 1;i <=10000;i++){
+            int count = 0;
+            for (int j = 1;j < i;j++){
+                if (i % j == 0)
+                    count += j;
+            }
+            if (count == i)
+                System.out.print(i + " ");
+        }
+    }
+
+}
