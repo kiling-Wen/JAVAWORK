@@ -1,0 +1,93 @@
+package practice;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
+
+/*
+ * 使用链表和映射存放多个图书信息，
+ * 遍历并输出。其中商品属性：编号，名称，单价，出版社；
+ * 使用商品编号作为映射中的key。
+ * */
+public class practice1 {
+	static class Books {
+	    /**
+	     * book_num 编号
+	     * book_name 名称
+	     * price 价格
+	     * publisher 出版社
+	     */
+	    private int book_num;
+	    private String book_name;
+	    private double price;
+	    private String publisher;
+	    public Books(int book_num, String  book_name, double price, String publisher) {
+	        this.book_num = book_num;
+	        this.book_name = book_name;
+	        this.price = price;
+	        this.publisher = publisher;
+	    }
+	    public int getbooknum() {
+	        return book_num;
+	    }
+	    public String getbookname() {
+	        return book_name;
+	    }
+	    public double getprice() {
+	        return price;
+	    }
+	    public String getpublisher() {
+	        return publisher;
+	    }
+	    public void setbooknum(int book_num){
+            this.book_num = book_num;
+        }
+        public void setbookname(String book_name){
+            this.book_name = book_name;
+        }
+        public void setPrice(double price){
+            this.price = price;
+        }
+        public void setpubisher(String pubisher){
+            this.publisher = pubisher;
+        }
+    }
+	public static void main(String[] args) {
+		ArrayList<Books> books = new ArrayList<Books>();//用于存储信息
+		Map<Integer, Books> booksHashMap = new HashMap<>();
+		Scanner input = new Scanner(System.in);
+		System.out.print("请输入书本数量：");
+	    int n = input.nextInt();
+	    for(int i = 0;i < n;++ i){
+	    	int book_num;
+	        String book_name,publisher;
+	        double price;
+	        book_num = input.nextInt();//书本编号
+	        book_name = input.next();//名称
+	        price = input.nextDouble();//单价
+	        publisher = input.next();//出版社
+	        Books x = new Books(book_num, publisher, price, publisher);
+	        books.add(x);
+	        booksHashMap.put(x.getbooknum(), x);
+	    }
+	    Iterator iter = books.iterator();
+	    while(iter.hasNext()){
+	        Books book = (Books) iter.next();
+	        System.out.println(book.getbookname());
+	    }
+	    //遍历所有编号映射的书
+	    while(iter.hasNext()){
+	        Map.Entry entry = (Map.Entry)iter.next();
+	        System.out.println("next :" + entry.getKey() + " " + ((Books)entry.getValue()).getbookname());
+	    }
+
+
+	}
+}
+/**
+ *Books books1 = new Books(1001, "Java", 888.0, "Sun出版社");
+ *Books books2 = new Books(1002, "Python", 257.0, "Python出版社");
+ *Books books3 = new Books(1003, "C++", 155.0, "C++出版社");
+ * */
